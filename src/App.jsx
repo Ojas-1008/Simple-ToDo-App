@@ -17,13 +17,24 @@ function App() {
 
     setTodos(prevTodos => [...prevTodos, newTodo]);
   }
+
+  function removeTodo(idToRemove) {
+    setTodos(prevTodos => prevTodos.filter(todo => todo.id !== idToRemove));
+  }
+
+  function toggleTodo(idToToggle) {
+    setTodos(prevTodos => prevTodos.map(todo => todo.id === idToToggle ? 
+      { ...todo, done: !todo.done }
+      : todo
+    ));
+  }
+
   return (
     <div className="app-container">
       <h1>Todo App</h1>
       <TodoInput onAdd={addTodo} />
       <FilterBar />
-      <TodoList />
-      <TodoItem />
+      <TodoList todos={todos} onDelete={removeTodo} onToggle={toggleTodo} />
     </div>
   );
 }
