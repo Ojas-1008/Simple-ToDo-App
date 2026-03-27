@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
-import TodoItem from "./components/TodoItem";
 import FilterBar from "./components/FilterBar";
 
 function App() {
 
   const [todos, setTodos] = useState([]);
   const [filter, setFilter] = useState("all");
+  const filters = {
+    all: (todos) => todos,
+    completed: (todos) => todos.filter((todo) => todo.done === true),
+    active: (todos) => todos.filter((todo) => todo.done === false)
+  };
+  const visibleTodos = filters[filter](todos);
   function addTodo(text) {
     const newTodo = {
       id: crypto.randomUUID(),
@@ -23,7 +28,7 @@ function App() {
   }
 
   function toggleTodo(idToToggle) {
-    setTodos(prevTodos => prevTodos.map(todo => todo.id === idToToggle ? 
+    setTodos(prevTodos => prevTodos.map(todo => todo.id === idToToggle ?
       { ...todo, done: !todo.done }
       : todo
     ));
@@ -33,8 +38,8 @@ function App() {
     <div className="app-container">
       <h1>Todo App</h1>
       <TodoInput onAdd={addTodo} />
-      <FilterBar />
-      <TodoList todos={todos} onDelete={removeTodo} onToggle={toggleTodo} />
+      <TodoList todos={visibleTodos} onDelete={removeTodo} onToggle={toggleTodo} filter={filter} />
+      <FilterBar filter={filter} onFilterChange={(filterUpdate) => setFilter(filterUpdate)} />
     </div>
   );
 }
