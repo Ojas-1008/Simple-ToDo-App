@@ -1,0 +1,31 @@
+# Project Requirements & Dependencies: Simple ToDo App
+
+## 🖥️ System Requirements
+To run this project locally, you need the following installed on your system:
+- **Node.js**: Version 20.x or higher (Recommended: v20.12.0+)
+- **pnpm**: Version 9.x (Fast, disk space efficient package manager)
+- **Git**: For version control and repository cloning
+
+## 📦 Core Dependencies
+These are the primary libraries used to build the application logic and UI:
+- **React** (^19.2.4): Core library for building the user interface.
+- **React-DOM** (^19.2.4): Entry point to the DOM and server renderers for React.
+
+## 🛠️ Development Dependencies
+These tools are required for development, building, and styling the project:
+- **Vite** (^8.0.1): Modern frontend build tool and development server.
+- **Tailwind CSS** (^4.2.2): Utility-first CSS framework for rapid styling.
+- **@tailwindcss/vite** (^4.2.2): Official Vite plugin for Tailwind CSS 4 integration.
+- **ESLint** (^9.39.4): Pluggable linting utility for JavaScript/React code quality.
+- **PostCSS** (^8.5.8) & **Autoprefixer** (^10.4.27): CSS post-processing and vendor prefixing.
+- **@vitejs/plugin-react** (^6.0.1): Enables React support in Vite (HMR, etc.).
+
+## 🚀 Getting Started
+1. **Install Dependencies**:
+   pnpm install
+
+2. **Start Development Server**:
+   pnpm dev
+
+3. **Build for Production**:
+   pnpm build
